@@ -55,9 +55,13 @@ body{
     transition: 0.3s;
 
 }
-.btn:hover{
+.btn:hover:not([disabled]){
     background-color: #00838F;
     color: white;
+    transform: scale(1.05);
+}
+.btn:disabled{
+    cursor: no-drop;
 }
 .answer-buttons{
     margin-top: 20px;
@@ -78,4 +82,13 @@ body{
     background-color: #00838F; 
     border-color: #006064; 
     transform: scale(1.05); 
+}
+
+.correct{
+    background-color: #228B22;
+    color: white;
+}
+.incorrect{
+    background-color: #D32F2F; /* Red */
+    color: white;
 }
