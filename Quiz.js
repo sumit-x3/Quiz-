@@ -48,6 +48,7 @@ function selectAnswer(e){
     let selectedBtn=e.target;
     if(selectedBtn.dataset.correct){
         selectedBtn.classList.add("correct");
+        score++;
     }else{
         selectedBtn.classList.add("incorrect");
     }
@@ -92,4 +93,31 @@ function startQuiz(){
     nextBtn.innerHTML="Next";
     showQuestion();
 }
+
+function showScore(){
+    resetState();
+    questionElement.innerHTML=`your score is ${score} out of ${questions.length}`;
+    nextBtn.style.display="block";
+
+}
+
+function handleBtn(){
+    curQsnIndex++;
+    if(curQsnIndex<questions.length){
+        resetState();
+        showQuestion();
+    }else{
+        showScore();
+        nextBtn.innerHTML="play again";
+    }
+}
+
+nextBtn.addEventListener("click",()=>{
+    if(curQsnIndex<questions.length){
+        handleBtn();
+    }else{
+        startQuiz();
+    }
+})
+
 startQuiz();
